@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 # -*- coding: iso-8859-15 -*-
 
+__author__ = "Markus Mäsker"
+__email__ = "maesker@gmx.net"
+__version__ = "1.0"
+__status__ = "Development"
 
 import matplotlib
 from matplotlib import pyplot
