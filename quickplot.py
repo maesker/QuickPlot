@@ -1,11 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: iso-8859-15 -*-
 
-__author__ = "Markus Mäsker"
-__email__ = "maesker@gmx.net"
-__version__ = "1.0"
-__status__ = "Development"
-
 import matplotlib
 from matplotlib import pyplot
 import sys
@@ -13,6 +8,12 @@ import csv
 import os
 import argparse
 import collections
+
+__author__ = "Markus Mäsker"
+__email__ = "maesker@gmx.net"
+__version__ = "1.0"
+__status__ = "Development"
+
 
 DEFAULT_FIG_SIZE = (17, 9)
 STRIP_CHARS = ' \n\t$¤%'
@@ -176,7 +177,8 @@ if __name__ == '__main__':
         description='Visualize selected columns from a csv file.')
     parser.add_argument('-f', '--file', help='CSV File to plot', required=True)
     parser.add_argument(
-        '-c', '--columns', help='List of columns to plot', required=True)
+        '-c', '--columns', help='Comma separated list of columns to plot',
+        required=True)
     parser.add_argument(
         '-n',
         '--noheader',
