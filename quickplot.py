@@ -53,6 +53,8 @@ class Csvplotter:
             try:
                 return float(val.strip(STRIP_CHARS))
             except ValueError:
+                if len(val) == 0:
+                    return
                 print(
                     "Row index: %i, float(%s) failed." %
                     (rowindex, k))
@@ -166,9 +168,11 @@ class Csvplotter:
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Process some integers.')
-    parser.add_argument('-f', '--file', help='CSV File to plot')
-    parser.add_argument('-c', '--columns', help='List of columns to plot')
+    parser = argparse.ArgumentParser(
+        description='Visualize selected columns from a csv file.')
+    parser.add_argument('-f', '--file', help='CSV File to plot', required=True)
+    parser.add_argument(
+        '-c', '--columns', help='List of columns to plot', required=True)
     parser.add_argument(
         '-n',
         '--noheader',
