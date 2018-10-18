@@ -73,7 +73,7 @@ class Csvplotter:
                     for k in row:
                         for pat in self.tmpatts:
                             if pat == k:
-                                print "add header:", pat
+                                print("add header:", pat)
                                 tmp.append(k)
                                 break
                         key = k.strip()
