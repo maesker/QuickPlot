@@ -20,6 +20,11 @@ STRIP_CHARS = ' \n\t$¤%'
 
 
 class Series:
+    """Contains one column of the csv file.
+
+A two array solution for x,y would be more cache friendly
+and would offer the opporitunity for binary search, but
+the runtime is limited by the matplotlib components anyway..."""
 
     def __init__(self, name=""):
         self.name = name
@@ -84,20 +89,15 @@ class Csvplotter:
                                 tmp.append(k)
                                 break
                         key = k.strip()
-                        s = Series(key)
-                        self.data[index] = s
+                        self.data[index] = Series(key)
                         index += 1
                     self.attrs = tmp
                 else:
                     rowindex += 1
-                    s = None
                     for k in row:
-                        if index not in self.data.keys():
-                            s = Series(index)
-                            self.data[index] = s
-                        else:
-                            s = self.data[index]
-                        s.add(rowindex, convert_value(k))
+                        if index not in self.data:
+                            self.data[index] = Series(index)
+                        self.data[index].add(rowindex, convert_value(k))
                         index += 1
 
     def gen_subplots(self):
